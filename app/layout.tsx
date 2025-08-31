@@ -22,7 +22,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`font-sans bg-blue-100/60 ${GeistSans.variable} ${GeistMono.variable}`}>
+                className={`font-sans bg-cyan-50/60 ${GeistSans.variable} ${GeistMono.variable}`}>
                 <FloatingSidebar />
                 <ScrollArea className="ml-20 h-dvh">{children}</ScrollArea>
                 <Analytics />

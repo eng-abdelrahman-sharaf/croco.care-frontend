@@ -221,7 +221,7 @@ export default function CoachPage() {
             icon: TrendingUp,
             change: "+5%",
             changeType: "neutral" as const,
-            color: "blue",
+            color: "cyan",
         },
         {
             title: "Weekly Goal",
@@ -253,14 +253,14 @@ export default function CoachPage() {
                 <div className="max-w-7xl mx-auto">
                     {/* Header */}
                     <div className="flex items-center justify-between mb-8">
-                        <h1 className="text-3xl font-bold text-blue-900">
+                        <h1 className="text-3xl font-bold text-cyan-900">
                             Your Coach Dashboard
                         </h1>
                         <Button
                             onClick={() => setIsCalendarOpen(!isCalendarOpen)}
                             variant="outline"
                             size="sm"
-                            className="border-blue-200 text-blue-600 hover:bg-blue-50">
+                            className="border-cyan-200 text-cyan-600 hover:bg-cyan-50">
                             <Calendar className="h-4 w-4 mr-2" />
                             Calendar
                         </Button>
@@ -271,20 +271,20 @@ export default function CoachPage() {
                     <div className="grid grid-cols-3 gap-8 ">
                         {/* Coach Chat Interface */}
                         <div className="space-y-6 col-span-2">
-                            <h2 className="text-xl font-semibold text-blue-800 mb-4">
+                            <h2 className="text-xl font-semibold text-cyan-800 mb-4">
                                 Coach Chat
                             </h2>
-                            <Card className="border-blue-200 grow h-96 flex flex-col">
+                            <Card className="border-cyan-200 grow h-96 flex flex-col">
                                 <CardHeader className="flex flex-row items-center space-y-0 pb-3">
                                     <div className="flex items-center space-x-2">
-                                        <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                                        <div className="w-8 h-8 bg-cyan-600 rounded-full flex items-center justify-center">
                                             <Bot className="h-4 w-4 text-white" />
                                         </div>
                                         <div>
-                                            <p className="text-sm font-medium text-blue-900">
+                                            <p className="text-sm font-medium text-cyan-900">
                                                 AI Coach
                                             </p>
-                                            {/* <p className="text-xs text-blue-600">
+                                            {/* <p className="text-xs text-cyan-600">
                                                 Online
                                             </p> */}
                                         </div>
@@ -306,8 +306,8 @@ export default function CoachPage() {
                                                         className={`max-w-[80%] p-3 rounded-lg ${
                                                             message.sender ===
                                                             "user"
-                                                                ? "bg-blue-600 text-white"
-                                                                : "bg-blue-50 text-blue-900 border border-blue-200"
+                                                                ? "bg-cyan-600 text-white"
+                                                                : "bg-cyan-50 text-cyan-900 border border-cyan-200"
                                                         }`}>
                                                         <p className="text-sm">
                                                             {message.text}
@@ -317,7 +317,7 @@ export default function CoachPage() {
                                             ))}
                                             {isCoachTyping && (
                                                 <div className="flex justify-start">
-                                                    <div className="max-w-[80%] p-3 rounded-lg bg-blue-50 text-blue-900 border border-blue-200">
+                                                    <div className="max-w-[80%] p-3 rounded-lg bg-cyan-50 text-cyan-900 border border-cyan-200">
                                                         <p className="text-sm flex items-center gap-2">
                                                             <span>
                                                                 Coach is typing
@@ -331,7 +331,7 @@ export default function CoachPage() {
                                             )}
                                         </div>
                                     </ScrollArea>
-                                    <div className="p-4 border-t border-blue-200">
+                                    <div className="p-4 border-t border-cyan-200">
                                         <div className="flex space-x-2">
                                             <Input
                                                 value={newMessage}
@@ -342,12 +342,12 @@ export default function CoachPage() {
                                                 }
                                                 onKeyPress={handleKeyPress}
                                                 placeholder="Ask your coach anything..."
-                                                className="flex-1 border-blue-200 focus:border-blue-400"
+                                                className="flex-1 border-cyan-200 focus:border-cyan-400"
                                             />
                                             <Button
                                                 onClick={sendMessage}
                                                 size="sm"
-                                                className="bg-blue-600 hover:bg-blue-700 text-white">
+                                                className="bg-cyan-600 hover:bg-cyan-700 text-white">
                                                 <Send className="h-4 w-4" />
                                             </Button>
                                         </div>
@@ -358,7 +358,7 @@ export default function CoachPage() {
 
                         {/* Analytics Section */}
                         <div className="space-y-6">
-                            <h2 className="text-xl font-semibold text-blue-800 mb-4">
+                            <h2 className="text-xl font-semibold text-cyan-800 mb-4">
                                 Analytics Overview
                             </h2>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -382,11 +382,11 @@ export default function CoachPage() {
                                             changeColor = "text-green-600";
                                             iconColor = "text-green-600";
                                             break;
-                                        case "blue":
+                                        case "cyan":
                                             cardColor =
-                                                "border-blue-200 hover:shadow-md border-2";
-                                            changeColor = "text-blue-600";
-                                            iconColor = "text-blue-600";
+                                                "border-cyan-200 hover:shadow-md border-2";
+                                            changeColor = "text-cyan-600";
+                                            iconColor = "text-cyan-600";
                                             break;
                                         case "indigo":
                                             cardColor =
@@ -396,9 +396,9 @@ export default function CoachPage() {
                                             break;
                                         default:
                                             cardColor =
-                                                "border-blue-200 hover:shadow-md border-2";
-                                            changeColor = "text-blue-600";
-                                            iconColor = "text-blue-600";
+                                                "border-cyan-200 hover:shadow-md border-2";
+                                            changeColor = "text-cyan-600";
+                                            iconColor = "text-cyan-600";
                                     }
                                     return (
                                         <Card
@@ -446,53 +446,53 @@ export default function CoachPage() {
                             </div>
 
                             {/* Weekly Progress Chart */}
-                            <Card className="border-blue-200">
+                            <Card className="border-cyan-200">
                                 <CardHeader>
-                                    <CardTitle className="text-blue-800">
+                                    <CardTitle className="text-cyan-800">
                                         Weekly Progress
                                     </CardTitle>
                                 </CardHeader>
                                 <CardContent>
                                     <div className="space-y-4">
                                         <div className="flex items-center justify-between">
-                                            <span className="text-sm text-blue-790">
+                                            <span className="text-sm text-cyan-790">
                                                 Workout Sessions
                                             </span>
-                                            <span className="text-sm font-medium text-blue-900">
+                                            <span className="text-sm font-medium text-cyan-900">
                                                 5/7
                                             </span>
                                         </div>
-                                        <div className="w-full bg-blue-100 rounded-full h-2">
+                                        <div className="w-full bg-cyan-100 rounded-full h-2">
                                             <div
-                                                className="bg-blue-600 h-2 rounded-full"
+                                                className="bg-cyan-600 h-2 rounded-full"
                                                 style={{ width: "71%" }}></div>
                                         </div>
 
                                         <div className="flex items-center justify-between">
-                                            <span className="text-sm text-blue-790">
+                                            <span className="text-sm text-cyan-790">
                                                 Calorie Goal
                                             </span>
-                                            <span className="text-sm font-medium text-blue-900">
+                                            <span className="text-sm font-medium text-cyan-900">
                                                 2,450/2,500
                                             </span>
                                         </div>
-                                        <div className="w-full bg-blue-100 rounded-full h-2">
+                                        <div className="w-full bg-cyan-100 rounded-full h-2">
                                             <div
-                                                className="bg-blue-600 h-2 rounded-full"
+                                                className="bg-cyan-600 h-2 rounded-full"
                                                 style={{ width: "98%" }}></div>
                                         </div>
 
                                         <div className="flex items-center justify-between">
-                                            <span className="text-sm text-blue-700">
+                                            <span className="text-sm text-cyan-700">
                                                 Water Intake
                                             </span>
-                                            <span className="text-sm font-medium text-blue-900">
+                                            <span className="text-sm font-medium text-cyan-900">
                                                 2.1/2.5L
                                             </span>
                                         </div>
-                                        <div className="w-full bg-blue-100 rounded-full h-2">
+                                        <div className="w-full bg-cyan-100 rounded-full h-2">
                                             <div
-                                                className="bg-blue-600 h-2 rounded-full"
+                                                className="bg-cyan-600 h-2 rounded-full"
                                                 style={{ width: "84%" }}></div>
                                         </div>
                                     </div>
@@ -505,17 +505,17 @@ export default function CoachPage() {
 
             {/* Calendar Right Sidebar */}
             {isCalendarOpen && (
-                <div className="inset-y-0 right-0 w-80 fixed bg-white border-l border-blue-200 shadow-lg z-50 flex flex-col">
-                    <div className="p-4 border-b border-blue-200">
+                <div className="inset-y-0 right-0 w-80 fixed bg-white border-l border-cyan-200 shadow-lg z-50 flex flex-col">
+                    <div className="p-4 border-b border-cyan-200">
                         <div className="flex items-center justify-between">
-                            <h3 className="text-lg font-semibold text-blue-900">
+                            <h3 className="text-lg font-semibold text-cyan-900">
                                 Calendar
                             </h3>
                             <Button
                                 onClick={() => setIsCalendarOpen(false)}
                                 variant="ghost"
                                 size="sm"
-                                className="text-blue-600 hover:bg-blue-50">
+                                className="text-cyan-600 hover:bg-cyan-50">
                                 <X className="h-4 w-4" />
                             </Button>
                         </div>
@@ -529,10 +529,10 @@ export default function CoachPage() {
                                         onClick={() => navigateMonth("prev")}
                                         variant="ghost"
                                         size="sm"
-                                        className="text-blue-600 hover:bg-blue-50">
+                                        className="text-cyan-600 hover:bg-cyan-50">
                                         <ChevronLeft className="h-4 w-4" />
                                     </Button>
-                                    <h4 className="text-lg font-semibold text-blue-900">
+                                    <h4 className="text-lg font-semibold text-cyan-900">
                                         {monthNames[currentDate.getMonth()]}{" "}
                                         {currentDate.getFullYear()}
                                     </h4>
@@ -540,7 +540,7 @@ export default function CoachPage() {
                                         onClick={() => navigateMonth("next")}
                                         variant="ghost"
                                         size="sm"
-                                        className="text-blue-600 hover:bg-blue-50">
+                                        className="text-cyan-600 hover:bg-cyan-50">
                                         <ChevronRight className="h-4 w-4" />
                                     </Button>
                                 </div>
@@ -551,7 +551,7 @@ export default function CoachPage() {
                                     {dayNames.map((day) => (
                                         <div
                                             key={day}
-                                            className="text-center text-xs font-medium text-blue-700 py-2">
+                                            className="text-center text-xs font-medium text-cyan-700 py-2">
                                             {day}
                                         </div>
                                     ))}
@@ -584,14 +584,14 @@ export default function CoachPage() {
                                             const dayClasses = cn(
                                                 "h-8 flex items-center justify-center text-sm rounded cursor-pointer transition-colors",
                                                 isToday &&
-                                                    "border border-blue-600",
+                                                    "border border-cyan-600",
                                                 hasWorkout
                                                     ? status === "done"
                                                         ? "bg-green-100 text-green-800 font-medium hover:bg-green-200 border border-green-300"
                                                         : status === "not-done"
                                                         ? "bg-red-100 text-red-800 font-medium hover:bg-red-200 border border-red-300"
                                                         : "bg-gray-100 text-gray-800 font-medium hover:bg-gray-200 border border-gray-300"
-                                                    : "text-blue-700 hover:bg-blue-50"
+                                                    : "text-cyan-700 hover:bg-cyan-50"
                                             );
 
                                             return (
@@ -609,32 +609,32 @@ export default function CoachPage() {
                                 </div>
 
                                 {/* Legend */}
-                                <div className="space-y-2 pt-4 border-t border-blue-200">
-                                    <h5 className="text-sm font-medium text-blue-800">
+                                <div className="space-y-2 pt-4 border-t border-cyan-200">
+                                    <h5 className="text-sm font-medium text-cyan-800">
                                         Workout Status Legend
                                     </h5>
                                     <div className="flex gap-2 flex-wrap">
                                         <div className="flex items-center gap-2 text-xs">
-                                            <div className="w-3 h-3 bg-blue-600 rounded"></div>
-                                            <span className="text-blue-700">
+                                            <div className="w-3 h-3 bg-cyan-600 rounded"></div>
+                                            <span className="text-cyan-700">
                                                 Today
                                             </span>
                                         </div>
                                         <div className="flex items-center gap-2 text-xs">
                                             <div className="w-3 h-3 bg-green-100 border border-green-300 rounded"></div>
-                                            <span className="text-blue-700">
+                                            <span className="text-cyan-700">
                                                 Completed
                                             </span>
                                         </div>
                                         <div className="flex items-center gap-2 text-xs">
                                             <div className="w-3 h-3 bg-red-100 border border-red-300 rounded"></div>
-                                            <span className="text-blue-700">
+                                            <span className="text-cyan-700">
                                                 Not Completed
                                             </span>
                                         </div>
                                         <div className="flex items-center gap-2 text-xs">
                                             <div className="w-3 h-3 bg-gray-100 border border-gray-300 rounded"></div>
-                                            <span className="text-blue-700">
+                                            <span className="text-cyan-700">
                                                 No Status
                                             </span>
                                         </div>
@@ -642,9 +642,9 @@ export default function CoachPage() {
                                 </div>
 
                                 {selectedDay && (
-                                    <div className="space-y-4 pt-4 border-t border-blue-200">
+                                    <div className="space-y-4 pt-4 border-t border-cyan-200">
                                         <div className="flex items-center justify-between">
-                                            <h5 className="text-sm font-medium text-blue-800">
+                                            <h5 className="text-sm font-medium text-cyan-800">
                                                 Day {selectedDay} Details
                                             </h5>
                                             <Button
@@ -655,7 +655,7 @@ export default function CoachPage() {
                                                 }
                                                 variant="ghost"
                                                 size="sm"
-                                                className="text-blue-600 hover:bg-blue-50 h-6 w-6 p-0">
+                                                className="text-cyan-600 hover:bg-cyan-50 h-6 w-6 p-0">
                                                 <X className="h-3 w-3" />
                                             </Button>
                                         </div>
@@ -664,7 +664,7 @@ export default function CoachPage() {
                                             dayData[selectedDay]?.workouts
                                                 ?.length > 0 && (
                                                 <div className="space-y-2">
-                                                    <label className="text-xs font-medium text-blue-800">
+                                                    <label className="text-xs font-medium text-cyan-800">
                                                         Workout Status:
                                                     </label>
                                                     <Select
@@ -722,14 +722,14 @@ export default function CoachPage() {
                                                     ?.length > 0 && (
                                                     <TabsTrigger
                                                         value="workouts"
-                                                        className="text-xs rounded-full data-[state=active]:bg-blue-200">
+                                                        className="text-xs rounded-full data-[state=active]:bg-cyan-200">
                                                         <Dumbbell className="h-3 w-3 mr-1" />
                                                         Workouts
                                                     </TabsTrigger>
                                                 )}
                                                 <TabsTrigger
                                                     value="meals"
-                                                    className="text-xs rounded-full data-[state=active]:bg-blue-200">
+                                                    className="text-xs rounded-full data-[state=active]:bg-cyan-200">
                                                     <Utensils className="h-3 w-3 mr-1" />
                                                     Meals
                                                 </TabsTrigger>
@@ -746,7 +746,7 @@ export default function CoachPage() {
                                                         (workout) => (
                                                             <div
                                                                 key={workout.id}
-                                                                className="bg-blue-50 p-3 rounded-lg cursor-pointer hover:bg-blue-100 transition-colors"
+                                                                className="bg-cyan-50 p-3 rounded-lg cursor-pointer hover:bg-cyan-100 transition-colors"
                                                                 onClick={() =>
                                                                     handleItemClick(
                                                                         workout
@@ -764,12 +764,12 @@ export default function CoachPage() {
                                                                         className="w-8 h-8 rounded object-cover"
                                                                     />
                                                                     <div className="flex-1">
-                                                                        <div className="text-sm font-medium text-blue-900">
+                                                                        <div className="text-sm font-medium text-cyan-900">
                                                                             {
                                                                                 workout.name
                                                                             }
                                                                         </div>
-                                                                        <div className="text-xs text-blue-600">
+                                                                        <div className="text-xs text-cyan-600">
                                                                             {
                                                                                 workout.sets
                                                                             }
@@ -800,7 +800,7 @@ export default function CoachPage() {
                                                     ].meals.map((meal) => (
                                                         <div
                                                             key={meal.id}
-                                                            className="bg-blue-50 p-3 rounded-lg cursor-pointer hover:bg-blue-100 transition-colors"
+                                                            className="bg-cyan-50 p-3 rounded-lg cursor-pointer hover:bg-cyan-100 transition-colors"
                                                             onClick={() =>
                                                                 handleItemClick(
                                                                     meal
@@ -818,12 +818,12 @@ export default function CoachPage() {
                                                                     className="w-8 h-8 rounded object-cover"
                                                                 />
                                                                 <div className="flex-1">
-                                                                    <div className="text-sm font-medium text-blue-900">
+                                                                    <div className="text-sm font-medium text-cyan-900">
                                                                         {
                                                                             meal.name
                                                                         }
                                                                     </div>
-                                                                    <div className="text-xs text-blue-600">
+                                                                    <div className="text-xs text-cyan-600">
                                                                         {
                                                                             meal.duration
                                                                         }{" "}
@@ -838,7 +838,7 @@ export default function CoachPage() {
                                                         </div>
                                                     ))
                                                 ) : (
-                                                    <div className="text-center py-4 text-sm text-blue-600">
+                                                    <div className="text-center py-4 text-sm text-cyan-600">
                                                         No meals scheduled for
                                                         this day
                                                     </div>
@@ -858,7 +858,7 @@ export default function CoachPage() {
                     {selectedItem && (
                         <>
                             <DialogHeader>
-                                <DialogTitle className="text-blue-900">
+                                <DialogTitle className="text-cyan-900">
                                     {selectedItem.name}
                                 </DialogTitle>
                             </DialogHeader>
@@ -886,7 +886,7 @@ export default function CoachPage() {
                                     />
                                 )}
 
-                                <div className="flex items-center gap-4 text-sm text-blue-700">
+                                <div className="flex items-center gap-4 text-sm text-cyan-700">
                                     <div className="flex items-center gap-1">
                                         <Clock className="h-4 w-4" />
                                         {selectedItem.duration}
@@ -904,12 +904,12 @@ export default function CoachPage() {
                                     )}
                                 </div>
 
-                                <p className="text-sm text-blue-800">
+                                <p className="text-sm text-cyan-800">
                                     {selectedItem.description}
                                 </p>
 
                                 <div className="space-y-2">
-                                    <h4 className="font-medium text-blue-900">
+                                    <h4 className="font-medium text-cyan-900">
                                         {"steps" in selectedItem
                                             ? "Instructions:"
                                             : "Ingredients:"}
@@ -929,8 +929,8 @@ export default function CoachPage() {
                                                     ) => (
                                                         <div
                                                             key={index}
-                                                            className="text-sm text-blue-700 flex items-start gap-2">
-                                                            <span className="text-blue-500 font-medium">
+                                                            className="text-sm text-cyan-700 flex items-start gap-2">
+                                                            <span className="text-cyan-500 font-medium">
                                                                 {index + 1}.
                                                             </span>
                                                             <span>{item}</span>
@@ -950,8 +950,8 @@ export default function CoachPage() {
                                                     ) => (
                                                         <div
                                                             key={index}
-                                                            className="text-sm text-blue-700 flex items-start gap-2">
-                                                            <span className="text-blue-500 font-medium">
+                                                            className="text-sm text-cyan-700 flex items-start gap-2">
+                                                            <span className="text-cyan-500 font-medium">
                                                                 {index + 1}.
                                                             </span>
                                                             <span>{item}</span>

@@ -232,26 +232,26 @@ const getAlertVariant = (type: string) => {
 
 export default function ReportsPage() {
     return (
-        <div className="min-h-screen bg-blue-50/30 p-6">
+        <div className="min-h-screen bg-cyan-50/30 p-6">
             <div className="max-w-6xl mx-auto space-y-6">
                 {/* Header */}
                 <div className="text-center space-y-2">
-                    <h1 className="text-3xl font-bold text-blue-900">
+                    <h1 className="text-3xl font-bold text-cyan-900">
                         Medical Reports
                     </h1>
-                    <p className="text-blue-600">
+                    <p className="text-cyan-600">
                         Comprehensive health assessments and diagnostic results
                     </p>
                 </div>
 
                 {/* Reports Accordion */}
-                <Card className="border-blue-200 p-0 overflow-hidden gap-0">
-                    <CardHeader className="bg-blue-50 py-6 border-b-blue-200 border">
-                        <CardTitle className="text-blue-900 flex items-center gap-2">
+                <Card className="border-cyan-200 p-0 overflow-hidden gap-0">
+                    <CardHeader className="bg-cyan-50 py-6 border-b-cyan-200 border">
+                        <CardTitle className="text-cyan-900 flex items-center gap-2">
                             <Stethoscope className="h-5 w-5" />
                             Patient Reports
                         </CardTitle>
-                        <CardDescription className="text-blue-600">
+                        <CardDescription className="text-cyan-600">
                             View detailed medical reports and assessments
                         </CardDescription>
                     </CardHeader>
@@ -261,11 +261,11 @@ export default function ReportsPage() {
                                 <AccordionItem
                                     key={report.id}
                                     value={report.id}
-                                    className="border-blue-100">
-                                    <AccordionTrigger className="px-6 py-4 hover:bg-blue-50 text-blue-900 font-medium">
+                                    className="border-cyan-100">
+                                    <AccordionTrigger className="px-6 py-4 hover:bg-cyan-50 text-cyan-900 font-medium">
                                         <div className="flex items-center justify-between w-full mr-4">
                                             <span>{report.title}</span>
-                                            <span className="text-sm text-blue-600 font-normal">
+                                            <span className="text-sm text-cyan-600 font-normal">
                                                 {report.date}
                                             </span>
                                         </div>
@@ -273,7 +273,7 @@ export default function ReportsPage() {
                                     <AccordionContent className="px-6 pb-6 space-y-6">
                                         {/* Vitals Row */}
                                         <div className="space-y-3">
-                                            <h3 className="text-lg font-semibold text-blue-900 flex items-center gap-2">
+                                            <h3 className="text-lg font-semibold text-cyan-900 flex items-center gap-2">
                                                 <Activity className="h-5 w-5" />
                                                 Vital Signs
                                             </h3>
@@ -382,23 +382,23 @@ export default function ReportsPage() {
 
                                         {/* Lab Results Table */}
                                         <div className="space-y-3">
-                                            <h3 className="text-lg font-semibold text-blue-900">
+                                            <h3 className="text-lg font-semibold text-cyan-900">
                                                 Laboratory Results
                                             </h3>
-                                            <div className="border border-blue-200 rounded-lg overflow-hidden">
+                                            <div className="border border-cyan-200 rounded-lg overflow-hidden">
                                                 <Table>
-                                                    <TableHeader className="bg-blue-50">
+                                                    <TableHeader className="bg-cyan-50">
                                                         <TableRow>
-                                                            <TableHead className="text-blue-900 font-semibold">
+                                                            <TableHead className="text-cyan-900 font-semibold">
                                                                 Examination
                                                             </TableHead>
-                                                            <TableHead className="text-blue-900 font-semibold">
+                                                            <TableHead className="text-cyan-900 font-semibold">
                                                                 Result
                                                             </TableHead>
-                                                            <TableHead className="text-blue-900 font-semibold">
+                                                            <TableHead className="text-cyan-900 font-semibold">
                                                                 Unit
                                                             </TableHead>
-                                                            <TableHead className="text-blue-900 font-semibold">
+                                                            <TableHead className="text-cyan-900 font-semibold">
                                                                 Normal Value
                                                             </TableHead>
                                                         </TableRow>
@@ -408,23 +408,23 @@ export default function ReportsPage() {
                                                             (lab, index) => (
                                                                 <TableRow
                                                                     key={index}
-                                                                    className="hover:bg-blue-50/50">
-                                                                    <TableCell className="font-medium text-blue-900">
+                                                                    className="hover:bg-cyan-50/50">
+                                                                    <TableCell className="font-medium text-cyan-900">
                                                                         {
                                                                             lab.examination
                                                                         }
                                                                     </TableCell>
-                                                                    <TableCell className="text-blue-800">
+                                                                    <TableCell className="text-cyan-800">
                                                                         {
                                                                             lab.result
                                                                         }
                                                                     </TableCell>
-                                                                    <TableCell className="text-blue-600">
+                                                                    <TableCell className="text-cyan-600">
                                                                         {
                                                                             lab.unit
                                                                         }
                                                                     </TableCell>
-                                                                    <TableCell className="text-blue-600">
+                                                                    <TableCell className="text-cyan-600">
                                                                         {
                                                                             lab.normalValue
                                                                         }
@@ -439,7 +439,7 @@ export default function ReportsPage() {
 
                                         {/* Alerts */}
                                         <div className="space-y-3">
-                                            <h3 className="text-lg font-semibold text-blue-900 flex items-center gap-2">
+                                            <h3 className="text-lg font-semibold text-cyan-900 flex items-center gap-2">
                                                 <AlertTriangle className="h-5 w-5" />
                                                 Health Alerts
                                             </h3>
@@ -451,7 +451,7 @@ export default function ReportsPage() {
                                                             variant={getAlertVariant(
                                                                 alert.type
                                                             )}
-                                                            className="border-blue-200">
+                                                            className="border-cyan-200">
                                                             <AlertTriangle className="h-4 w-4" />
                                                             <AlertTitle className="capitalize">
                                                                 {alert.type}
@@ -467,20 +467,20 @@ export default function ReportsPage() {
 
                                         {/* Doctor Specialization */}
                                         <div className="space-y-3">
-                                            <h3 className="text-lg font-semibold text-blue-900 flex items-center gap-2">
+                                            <h3 className="text-lg font-semibold text-cyan-900 flex items-center gap-2">
                                                 <UserCheck className="h-5 w-5" />
                                                 Recommended Specialist
                                             </h3>
                                             <Badge
                                                 variant="outline"
-                                                className="text-blue-700 border-blue-300 bg-blue-50 text-base px-4 py-2">
+                                                className="text-cyan-700 border-cyan-300 bg-cyan-50 text-base px-4 py-2">
                                                 {report.specialization}
                                             </Badge>
                                         </div>
 
                                         {/* Suspected Health Problems */}
                                         <div className="space-y-3">
-                                            <h3 className="text-lg font-semibold text-blue-900">
+                                            <h3 className="text-lg font-semibold text-cyan-900">
                                                 Suspected Health Conditions
                                             </h3>
                                             <div className="flex flex-wrap gap-2">
@@ -489,7 +489,7 @@ export default function ReportsPage() {
                                                         <Badge
                                                             key={index}
                                                             variant="secondary"
-                                                            className="bg-blue-100 text-blue-800 border-blue-200">
+                                                            className="bg-cyan-100 text-cyan-800 border-cyan-200">
                                                             {problem}
                                                         </Badge>
                                                     )

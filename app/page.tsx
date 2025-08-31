@@ -108,7 +108,7 @@ export default function HomePage() {
                             <p className="text-sm text-muted-foreground">
                                 Today
                             </p>
-                            <p className="text-lg font-semibold text-blue-600">
+                            <p className="text-lg font-semibold text-cyan-600">
                                 {new Date().toLocaleDateString("en-US", {
                                     weekday: "long",
                                     year: "numeric",
@@ -120,15 +120,15 @@ export default function HomePage() {
                     </div>
 
                     {/* Today's Tip Section */}
-                    <Card className="border-blue-200 bg-white">
+                    <Card className="border-cyan-200 bg-white">
                         <CardHeader className="pb-3">
-                            <CardTitle className="flex items-center gap-2 text-blue-700">
+                            <CardTitle className="flex items-center gap-2 text-cyan-700">
                                 <Lightbulb className="h-5 w-5" />
                                 {"Today's Health Tip"}
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <p className="text-blue-800 font-medium">
+                            <p className="text-cyan-800 font-medium">
                                 {randomTip}
                             </p>
                         </CardContent>
@@ -138,7 +138,7 @@ export default function HomePage() {
                     <Card>
                         <CardHeader>
                             <div className="flex items-center justify-between">
-                                <CardTitle className="text-blue-700">
+                                <CardTitle className="text-cyan-700">
                                     {"Today's Reminders"}
                                 </CardTitle>
                                 <div className="flex items-center gap-2">
@@ -148,7 +148,7 @@ export default function HomePage() {
                                         onClick={() =>
                                             setHideCompleted(!hideCompleted)
                                         }
-                                        className="text-blue-600 border-blue-200 hover:bg-blue-50">
+                                        className="text-cyan-600 border-cyan-200 hover:bg-cyan-50">
                                         {hideCompleted ? (
                                             <Eye className="h-4 w-4 mr-1" />
                                         ) : (
@@ -176,11 +176,11 @@ export default function HomePage() {
                                             onCheckedChange={() =>
                                                 toggleReminder(reminder.id)
                                             }
-                                            className="data-[state=checked]:bg-blue-600 data-[state=checked]:border-blue-600"
+                                            className="data-[state=checked]:bg-cyan-600 data-[state=checked]:border-cyan-600"
                                         />
                                         <div className="flex items-center gap-2 flex-1">
                                             {reminder.type === "workout" ? (
-                                                <Dumbbell className="h-4 w-4 text-blue-600" />
+                                                <Dumbbell className="h-4 w-4 text-cyan-600" />
                                             ) : (
                                                 <UtensilsCrossed className="h-4 w-4 text-green-600" />
                                             )}
@@ -201,7 +201,7 @@ export default function HomePage() {
                                             }
                                             className={
                                                 reminder.type === "workout"
-                                                    ? "bg-blue-100 text-blue-700 hover:bg-blue-200"
+                                                    ? "bg-cyan-100 text-cyan-700 hover:bg-cyan-200"
                                                     : "bg-green-100 text-green-700 hover:bg-green-200"
                                             }>
                                             {reminder.type}
@@ -234,15 +234,15 @@ export default function HomePage() {
                                 </CardContent>
                             </Card>
 
-                            <Card className="border-blue-200">
+                            <Card className="border-cyan-200">
                                 <CardHeader className="pb-2">
-                                    <CardTitle className="text-sm font-medium text-blue-700 flex items-center gap-2">
+                                    <CardTitle className="text-sm font-medium text-cyan-700 flex items-center gap-2">
                                         <Activity className="h-4 w-4" />
                                         Heart Rate
                                     </CardTitle>
                                 </CardHeader>
                                 <CardContent>
-                                    <div className="text-2xl font-bold text-blue-600">
+                                    <div className="text-2xl font-bold text-cyan-600">
                                         72 BPM
                                     </div>
                                     <p className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
@@ -334,7 +334,7 @@ export default function HomePage() {
 
                             <Card>
                                 <CardHeader className="pb-2">
-                                    <CardTitle className="text-sm font-medium text-blue-700">
+                                    <CardTitle className="text-sm font-medium text-cyan-700">
                                         Heart Rate Today
                                     </CardTitle>
                                 </CardHeader>

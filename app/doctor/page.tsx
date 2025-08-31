@@ -125,9 +125,9 @@ export default function DoctorPage() {
             unit: "mmHg",
             status: "normal",
             icon: Activity,
-            color: "text-blue-600",
-            bgColor: "bg-blue-50",
-            borderColor: "border-blue-200",
+            color: "text-cyan-600",
+            bgColor: "bg-cyan-50",
+            borderColor: "border-cyan-200",
             trend: "down",
         },
         {
@@ -192,7 +192,7 @@ export default function DoctorPage() {
             case "excellent":
                 return "text-green-600";
             case "normal":
-                return "text-blue-600";
+                return "text-cyan-600";
             case "warning":
                 return "text-yellow-600";
             case "critical":
@@ -218,13 +218,13 @@ export default function DoctorPage() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     {/* AI Doctor Chat */}
-                    <Card className="border-blue-200 p-0 overflow-hidden">
-                        <CardHeader className="bg-blue-50 py-6 border-b border-blue-200">
-                            <CardTitle className="flex items-center gap-2 text-blue-900">
+                    <Card className="border-cyan-200 p-0 overflow-hidden">
+                        <CardHeader className="bg-cyan-50 py-6 border-b border-cyan-200">
+                            <CardTitle className="flex items-center gap-2 text-cyan-900">
                                 <Stethoscope className="h-5 w-5" />
                                 AI Medical Assistant
                             </CardTitle>
-                            <CardDescription className="text-blue-700">
+                            <CardDescription className="text-cyan-700">
                                 Chat with Dr. Sarah for medical insights and
                                 health guidance
                             </CardDescription>
@@ -243,8 +243,8 @@ export default function DoctorPage() {
                                             <div
                                                 className={`max-w-[80%] rounded-lg p-3 ${
                                                     message.sender === "user"
-                                                        ? "bg-blue-600 text-white"
-                                                        : "bg-white border border-blue-200 text-gray-900"
+                                                        ? "bg-cyan-600 text-white"
+                                                        : "bg-white border border-cyan-200 text-gray-900"
                                                 }`}>
                                                 <p className="text-sm">
                                                     {message.text}
@@ -253,7 +253,7 @@ export default function DoctorPage() {
                                                     className={`text-xs mt-1 ${
                                                         message.sender ===
                                                         "user"
-                                                            ? "text-blue-100"
+                                                            ? "text-cyan-100"
                                                             : "text-gray-500"
                                                     }`}>
                                                     {message.timestamp}
@@ -263,7 +263,7 @@ export default function DoctorPage() {
                                     ))}
                                 </div>
                             </ScrollArea>
-                            <div className="p-4 border-t border-blue-200 bg-blue-50">
+                            <div className="p-4 border-t border-cyan-200 bg-cyan-50">
                                 <div className="flex gap-2">
                                     <Input
                                         value={inputMessage}
@@ -275,11 +275,11 @@ export default function DoctorPage() {
                                             e.key === "Enter" &&
                                             handleSendMessage()
                                         }
-                                        className="border-blue-300 focus:border-blue-500"
+                                        className="border-cyan-300 focus:border-cyan-500"
                                     />
                                     <Button
                                         onClick={handleSendMessage}
-                                        className="bg-blue-600 hover:bg-blue-700">
+                                        className="bg-cyan-600 hover:bg-cyan-700">
                                         <Send className="h-4 w-4" />
                                     </Button>
                                 </div>
@@ -288,12 +288,12 @@ export default function DoctorPage() {
                     </Card>
 
                     {/* Vital Signs Overview */}
-                    <Card className="border-blue-200 p-0 overflow-hidden">
-                        <CardHeader className="bg-blue-50 border-b border-blue-200 py-6">
-                            <CardTitle className="text-blue-900">
+                    <Card className="border-cyan-200 p-0 overflow-hidden">
+                        <CardHeader className="bg-cyan-50 border-b border-cyan-200 py-6">
+                            <CardTitle className="text-cyan-900">
                                 Current Vital Signs
                             </CardTitle>
-                            <CardDescription className="text-blue-700">
+                            <CardDescription className="text-cyan-700">
                                 Real-time health metrics and status
                             </CardDescription>
                         </CardHeader>
@@ -382,13 +382,13 @@ export default function DoctorPage() {
                     </Card>
 
                     {/* Blood Pressure Chart */}
-                    <Card className="border-blue-200 p-0 overflow-hidden">
-                        <CardHeader className="bg-blue-50 border-b border-blue-200 py-6">
-                            <CardTitle className="flex items-center gap-2 text-blue-900">
+                    <Card className="border-cyan-200 p-0 overflow-hidden">
+                        <CardHeader className="bg-cyan-50 border-b border-cyan-200 py-6">
+                            <CardTitle className="flex items-center gap-2 text-cyan-900">
                                 <Activity className="h-5 w-5" />
                                 Blood Pressure
                             </CardTitle>
-                            <CardDescription className="text-blue-700">
+                            <CardDescription className="text-cyan-700">
                                 Systolic and diastolic pressure
                             </CardDescription>
                         </CardHeader>
