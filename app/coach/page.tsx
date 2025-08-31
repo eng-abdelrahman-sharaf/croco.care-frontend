@@ -43,7 +43,7 @@ interface Message {
     id: number;
     text: string;
     sender: "user" | "coach";
-    timestamp: Date;
+    // timestamp: Date;
 }
 
 import { dayData, Workout, Meal, DayData } from "@/lib/dayData";
@@ -67,7 +67,7 @@ export default function CoachPage() {
             id: 1,
             text: "Hello! I'm your personal fitness coach. I'm here to help you achieve your health and fitness goals. How are you feeling today?",
             sender: "coach",
-            timestamp: new Date(),
+            // timestamp: new Date(),
         },
     ]);
     const [newMessage, setNewMessage] = useState("");
@@ -97,7 +97,7 @@ export default function CoachPage() {
                 id: messages.length + 1,
                 text: newMessage,
                 sender: "user",
-                timestamp: new Date(),
+                // timestamp: new Date(),
             };
 
             setMessages((prev) => [...prev, userMessage]);
@@ -109,7 +109,7 @@ export default function CoachPage() {
                     id: messages.length + 2,
                     text: "That's great to hear! Based on your recent progress, I recommend focusing on your cardio today. Would you like me to suggest a specific workout routine?",
                     sender: "coach",
-                    timestamp: new Date(),
+                    // timestamp: new Date(),
                 };
                 setMessages((prev) => [...prev, coachResponse]);
             }, 1000);
@@ -368,9 +368,9 @@ export default function CoachPage() {
                                             <p className="text-sm font-medium text-blue-900">
                                                 AI Coach
                                             </p>
-                                            <p className="text-xs text-blue-600">
+                                            {/* <p className="text-xs text-blue-600">
                                                 Online
-                                            </p>
+                                            </p> */}
                                         </div>
                                     </div>
                                 </CardHeader>
@@ -395,21 +395,6 @@ export default function CoachPage() {
                                                         }`}>
                                                         <p className="text-sm">
                                                             {message.text}
-                                                        </p>
-                                                        <p
-                                                            className={`text-xs mt-1 ${
-                                                                message.sender ===
-                                                                "user"
-                                                                    ? "text-blue-100"
-                                                                    : "text-blue-600"
-                                                            }`}>
-                                                            {message.timestamp.toLocaleTimeString(
-                                                                [],
-                                                                {
-                                                                    hour: "2-digit",
-                                                                    minute: "2-digit",
-                                                                }
-                                                            )}
                                                         </p>
                                                     </div>
                                                 </div>
