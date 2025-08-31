@@ -366,8 +366,8 @@ export default function CoachPage() {
                                     const Icon = item.icon;
                                     let cardColor = "";
                                     let iconColor = "";
-                                    let valueColor = "";
-                                    let unitColor = "";
+                                    const valueColor = "";
+                                    const unitColor = "";
                                     let changeColor = "";
                                     switch (item.color) {
                                         case "red":
@@ -581,7 +581,7 @@ export default function CoachPage() {
                                                 workoutDays.includes(day);
                                             const status = workoutStatus[day];
 
-                                            let dayClasses = cn(
+                                            const dayClasses = cn(
                                                 "h-8 flex items-center justify-center text-sm rounded cursor-pointer transition-colors",
                                                 isToday &&
                                                     "border border-blue-600",

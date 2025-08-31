@@ -101,7 +101,7 @@ export default function HomePage() {
                                 Good Morning!
                             </h1>
                             <p className="text-muted-foreground">
-                                Here's your health overview for today
+                                {"Here's your health overview for today"}
                             </p>
                         </div>
                         <div className="text-right">
@@ -124,7 +124,7 @@ export default function HomePage() {
                         <CardHeader className="pb-3">
                             <CardTitle className="flex items-center gap-2 text-blue-700">
                                 <Lightbulb className="h-5 w-5" />
-                                Today's Health Tip
+                                {"Today's Health Tip"}
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
@@ -139,7 +139,7 @@ export default function HomePage() {
                         <CardHeader>
                             <div className="flex items-center justify-between">
                                 <CardTitle className="text-blue-700">
-                                    Today's Reminders
+                                    {"Today's Reminders"}
                                 </CardTitle>
                                 <div className="flex items-center gap-2">
                                     <Button
