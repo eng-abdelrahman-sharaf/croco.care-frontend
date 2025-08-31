@@ -10,6 +10,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 export const metadata: Metadata = {
     title: "Croco Care",
+    icons: { icon: "/icon.png" },
     description:
         "An all-in-one health and fitness platform featuring an AI-powered coach, AI doctor, personalized reports, and more to help you stay healthy, fit, and informed every day.",
 };
