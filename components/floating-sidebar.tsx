@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { LogoIcon } from "./icons/logo";
 import { SloganIcon } from "./icons/slogan";
+import { usePathname } from "next/navigation";
 
 const navigationItems = [
     { icon: Home, label: "Home", href: "/" },
@@ -30,11 +31,11 @@ const navigationItems = [
 export default function FloatingSidebar() {
     const [isExpanded, setIsExpanded] = useState(false);
     const [isSignedIn, setIsSignedIn] = useState(false); // This would come from your auth state
-
+    const page = "/"+usePathname().split("/")[1];
     return (
         <div
             className={cn(
-                "fixed left-4 top-4 bottom-4 z-50 flex flex-col bg-white border border-blue-200 rounded-lg shadow-lg transition-all duration-300 ease-in-out",
+                "fixed left-4 top-1/2 -translate-y-1/2 z-50 flex flex-col bg-white border border-blue-200 rounded-lg shadow-lg transition-all duration-300 ease-in-out",
                 isExpanded ? "w-64" : "w-16"
             )}
             onMouseEnter={() => setIsExpanded(true)}
@@ -60,7 +61,8 @@ export default function FloatingSidebar() {
                         key={item.label}
                         className={cn(
                             "w-full flex items-center p-3 rounded-lg text-left transition-all duration-200 hover:bg-blue-50 hover:text-blue-700 group",
-                            "focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            "focus:outline-none",
+                            page === item.href && "ring-2 ring-blue-500"
                         )}>
                         <item.icon className="w-5 h-5 text-blue-500 group-hover:text-blue-700 flex-shrink-0" />
                         <span
