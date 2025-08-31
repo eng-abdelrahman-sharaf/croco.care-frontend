@@ -374,8 +374,8 @@ export default function CoachPage() {
                                         </div>
                                     </div>
                                 </CardHeader>
-                                <CardContent className="flex-1 flex flex-col p-0">
-                                    <ScrollArea className="flex-1 p-4">
+                                <CardContent className="flex-1 flex flex-col p-0 overflow-hidden">
+                                    <ScrollArea className="flex-1 p-4 overflow-y-auto">
                                         <div className="space-y-4">
                                             {messages.map((message) => (
                                                 <div
