@@ -47,20 +47,25 @@ interface Message {
 }
 
 import { dayData, Workout, Meal, DayData } from "@/lib/dayData";
+import { cn } from "@/lib/utils";
 
 export default function CoachPage() {
     const [isCalendarOpen, setIsCalendarOpen] = useState(false);
     const [currentDate, setCurrentDate] = useState(new Date());
     const today = new Date();
-    const [selectedDay, setSelectedDay] = useState<number | null>(
-        today.getDate()
+    const [selectedDay, setDay] = useState<number>(today.getDate());
+    const [selectedTab, setSelectedTab] = useState<"workouts" | "meals">(
+        dayData[selectedDay].workouts.length ? "workouts" : "meals"
     );
+
+    const setSelectedDay = (day: number) => {
+        setSelectedTab(dayData[day].workouts.length ? "workouts" : "meals");
+        setDay(day);
+    };
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState<Workout | Meal | null>(
         null
-    );
-    const [selectedTab, setSelectedTab] = useState<"workouts" | "meals">(
-        "workouts"
     );
     const [messages, setMessages] = useState<Message[]>([
         {
@@ -71,6 +76,7 @@ export default function CoachPage() {
         },
     ]);
     const [newMessage, setNewMessage] = useState("");
+    const [isCoachTyping, setIsCoachTyping] = useState(false);
 
     // ...existing code...
 
@@ -104,7 +110,10 @@ export default function CoachPage() {
             setNewMessage("");
 
             // Simulate coach response
+            // Simulate coach typing effect
+            setIsCoachTyping(true);
             setTimeout(() => {
+                setIsCoachTyping(false);
                 const coachResponse: Message = {
                     id: messages.length + 2,
                     text: "That's great to hear! Based on your recent progress, I recommend focusing on your cardio today. Would you like me to suggest a specific workout routine?",
@@ -112,7 +121,7 @@ export default function CoachPage() {
                     // timestamp: new Date(),
                 };
                 setMessages((prev) => [...prev, coachResponse]);
-            }, 1000);
+            }, 1200);
         }
     };
 
@@ -194,6 +203,7 @@ export default function CoachPage() {
             icon: Flame,
             change: "+12%",
             changeType: "positive" as const,
+            color: "red",
         },
         {
             title: "Current Weight",
@@ -202,6 +212,7 @@ export default function CoachPage() {
             icon: Scale,
             change: "-2.1kg",
             changeType: "positive" as const,
+            color: "green",
         },
         {
             title: "Calories Gained",
@@ -210,6 +221,7 @@ export default function CoachPage() {
             icon: TrendingUp,
             change: "+5%",
             changeType: "neutral" as const,
+            color: "blue",
         },
         {
             title: "Weekly Goal",
@@ -218,6 +230,7 @@ export default function CoachPage() {
             icon: Target,
             change: "+15%",
             changeType: "positive" as const,
+            color: "indigo",
         },
     ];
 
@@ -234,7 +247,7 @@ export default function CoachPage() {
     };
 
     return (
-        <div className="min-h-screen bg-background relative">
+        <div className="min-h-screen relative">
             {/* Main Content */}
             <main className="p-8">
                 <div className="max-w-7xl mx-auto">
@@ -254,111 +267,14 @@ export default function CoachPage() {
                     </div>
 
                     {/* Main Grid Layout */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        {/* Analytics Section - Left Side */}
-                        <div className="space-y-6">
-                            <h2 className="text-xl font-semibold text-blue-800 mb-4">
-                                Analytics Overview
-                            </h2>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                {analyticsData.map((item, index) => {
-                                    const Icon = item.icon;
-                                    return (
-                                        <Card
-                                            key={index}
-                                            className="border-blue-200 hover:shadow-md transition-shadow">
-                                            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                                <CardTitle className="text-sm font-medium text-blue-700">
-                                                    {item.title}
-                                                </CardTitle>
-                                                <Icon className="h-4 w-4 text-blue-600" />
-                                            </CardHeader>
-                                            <CardContent>
-                                                <div className="text-2xl font-bold text-blue-900">
-                                                    {item.value}
-                                                    <span className="text-sm font-normal text-blue-600 ml-1">
-                                                        {item.unit}
-                                                    </span>
-                                                </div>
-                                                <p
-                                                    className={`text-xs mt-1 ${
-                                                        item.changeType ===
-                                                        "positive"
-                                                            ? "text-green-600"
-                                                            : item.changeType ===
-                                                              "neutral"
-                                                            ? "text-blue-600"
-                                                            : "text-red-600"
-                                                    }`}>
-                                                    {item.change} from last week
-                                                </p>
-                                            </CardContent>
-                                        </Card>
-                                    );
-                                })}
-                            </div>
-
-                            {/* Weekly Progress Chart */}
-                            <Card className="border-blue-200">
-                                <CardHeader>
-                                    <CardTitle className="text-blue-800">
-                                        Weekly Progress
-                                    </CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className="space-y-4">
-                                        <div className="flex items-center justify-between">
-                                            <span className="text-sm text-blue-700">
-                                                Workout Sessions
-                                            </span>
-                                            <span className="text-sm font-medium text-blue-900">
-                                                5/7
-                                            </span>
-                                        </div>
-                                        <div className="w-full bg-blue-100 rounded-full h-2">
-                                            <div
-                                                className="bg-blue-600 h-2 rounded-full"
-                                                style={{ width: "71%" }}></div>
-                                        </div>
-
-                                        <div className="flex items-center justify-between">
-                                            <span className="text-sm text-blue-700">
-                                                Calorie Goal
-                                            </span>
-                                            <span className="text-sm font-medium text-blue-900">
-                                                2,450/2,500
-                                            </span>
-                                        </div>
-                                        <div className="w-full bg-blue-100 rounded-full h-2">
-                                            <div
-                                                className="bg-blue-600 h-2 rounded-full"
-                                                style={{ width: "98%" }}></div>
-                                        </div>
-
-                                        <div className="flex items-center justify-between">
-                                            <span className="text-sm text-blue-700">
-                                                Water Intake
-                                            </span>
-                                            <span className="text-sm font-medium text-blue-900">
-                                                2.1/2.5L
-                                            </span>
-                                        </div>
-                                        <div className="w-full bg-blue-100 rounded-full h-2">
-                                            <div
-                                                className="bg-blue-600 h-2 rounded-full"
-                                                style={{ width: "84%" }}></div>
-                                        </div>
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </div>
-
-                        {/* Coach Chat Interface - Right Side */}
-                        <div className="space-y-6">
+                    {/* <div className="flex gap-8 justify-between flex-wrap"> */}
+                    <div className="grid grid-cols-3 gap-8 ">
+                        {/* Coach Chat Interface */}
+                        <div className="space-y-6 col-span-2">
                             <h2 className="text-xl font-semibold text-blue-800 mb-4">
                                 Coach Chat
                             </h2>
-                            <Card className="border-blue-200 h-96 flex flex-col">
+                            <Card className="border-blue-200 grow h-96 flex flex-col">
                                 <CardHeader className="flex flex-row items-center space-y-0 pb-3">
                                     <div className="flex items-center space-x-2">
                                         <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
@@ -399,6 +315,20 @@ export default function CoachPage() {
                                                     </div>
                                                 </div>
                                             ))}
+                                            {isCoachTyping && (
+                                                <div className="flex justify-start">
+                                                    <div className="max-w-[80%] p-3 rounded-lg bg-blue-50 text-blue-900 border border-blue-200">
+                                                        <p className="text-sm flex items-center gap-2">
+                                                            <span>
+                                                                Coach is typing
+                                                            </span>
+                                                            <span className="animate-bounce">
+                                                                ...
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
                                     </ScrollArea>
                                     <div className="p-4 border-t border-blue-200">
@@ -425,13 +355,157 @@ export default function CoachPage() {
                                 </CardContent>
                             </Card>
                         </div>
+
+                        {/* Analytics Section */}
+                        <div className="space-y-6">
+                            <h2 className="text-xl font-semibold text-blue-800 mb-4">
+                                Analytics Overview
+                            </h2>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                {analyticsData.map((item, index) => {
+                                    const Icon = item.icon;
+                                    let cardColor = "";
+                                    let iconColor = "";
+                                    let valueColor = "";
+                                    let unitColor = "";
+                                    let changeColor = "";
+                                    switch (item.color) {
+                                        case "red":
+                                            cardColor =
+                                                "border-orange-200 hover:shadow-md border-2";
+                                            changeColor = "text-orange-600";
+                                            iconColor = "text-orange-500";
+                                            break;
+                                        case "green":
+                                            cardColor =
+                                                "border-green-200 hover:shadow-md border-2";
+                                            changeColor = "text-green-600";
+                                            iconColor = "text-green-600";
+                                            break;
+                                        case "blue":
+                                            cardColor =
+                                                "border-blue-200 hover:shadow-md border-2";
+                                            changeColor = "text-blue-600";
+                                            iconColor = "text-blue-600";
+                                            break;
+                                        case "indigo":
+                                            cardColor =
+                                                "border-indigo-200 hover:shadow-md border-2";
+                                            changeColor = "text-indigo-600";
+                                            iconColor = "text-indigo-600";
+                                            break;
+                                        default:
+                                            cardColor =
+                                                "border-blue-200 hover:shadow-md border-2";
+                                            changeColor = "text-blue-600";
+                                            iconColor = "text-blue-600";
+                                    }
+                                    return (
+                                        <Card
+                                            key={index}
+                                            className={
+                                                cardColor + " transition-shadow"
+                                            }>
+                                            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                                                <CardTitle
+                                                    className={
+                                                        "text-sm font-medium " +
+                                                        valueColor
+                                                    }>
+                                                    {item.title}
+                                                </CardTitle>
+                                                <Icon
+                                                    className={
+                                                        "h-8 w-8 " + iconColor
+                                                    }
+                                                />
+                                            </CardHeader>
+                                            <CardContent>
+                                                <div
+                                                    className={
+                                                        "text-2xl font-bold " +
+                                                        valueColor
+                                                    }>
+                                                    {item.value}
+                                                    <span
+                                                        className={
+                                                            "text-sm font-normal ml-1 " +
+                                                            unitColor
+                                                        }>
+                                                        {item.unit}
+                                                    </span>
+                                                </div>
+                                                <p
+                                                    className={`text-xs mt-1 ${changeColor}`}>
+                                                    {item.change} from last week
+                                                </p>
+                                            </CardContent>
+                                        </Card>
+                                    );
+                                })}
+                            </div>
+
+                            {/* Weekly Progress Chart */}
+                            <Card className="border-blue-200">
+                                <CardHeader>
+                                    <CardTitle className="text-blue-800">
+                                        Weekly Progress
+                                    </CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <div className="space-y-4">
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-sm text-blue-790">
+                                                Workout Sessions
+                                            </span>
+                                            <span className="text-sm font-medium text-blue-900">
+                                                5/7
+                                            </span>
+                                        </div>
+                                        <div className="w-full bg-blue-100 rounded-full h-2">
+                                            <div
+                                                className="bg-blue-600 h-2 rounded-full"
+                                                style={{ width: "71%" }}></div>
+                                        </div>
+
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-sm text-blue-790">
+                                                Calorie Goal
+                                            </span>
+                                            <span className="text-sm font-medium text-blue-900">
+                                                2,450/2,500
+                                            </span>
+                                        </div>
+                                        <div className="w-full bg-blue-100 rounded-full h-2">
+                                            <div
+                                                className="bg-blue-600 h-2 rounded-full"
+                                                style={{ width: "98%" }}></div>
+                                        </div>
+
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-sm text-blue-700">
+                                                Water Intake
+                                            </span>
+                                            <span className="text-sm font-medium text-blue-900">
+                                                2.1/2.5L
+                                            </span>
+                                        </div>
+                                        <div className="w-full bg-blue-100 rounded-full h-2">
+                                            <div
+                                                className="bg-blue-600 h-2 rounded-full"
+                                                style={{ width: "84%" }}></div>
+                                        </div>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </div>
                 </div>
             </main>
 
             {/* Calendar Right Sidebar */}
             {isCalendarOpen && (
-                <div className="fixed inset-y-0 right-0 w-80 bg-white border-l border-blue-200 shadow-lg z-50 flex flex-col">
+                <div className="inset-y-0 right-0 w-80 fixed bg-white border-l border-blue-200 shadow-lg z-50 flex flex-col">
                     <div className="p-4 border-b border-blue-200">
                         <div className="flex items-center justify-between">
                             <h3 className="text-lg font-semibold text-blue-900">
@@ -507,29 +581,18 @@ export default function CoachPage() {
                                                 workoutDays.includes(day);
                                             const status = workoutStatus[day];
 
-                                            let dayClasses =
-                                                "h-8 flex items-center justify-center text-sm rounded cursor-pointer transition-colors ";
-
-                                            if (isToday) {
-                                                dayClasses +=
-                                                    "bg-blue-600 text-white font-semibold";
-                                            } else if (hasWorkout) {
-                                                if (status === "done") {
-                                                    dayClasses +=
-                                                        "bg-green-100 text-green-800 font-medium hover:bg-green-200 border border-green-300";
-                                                } else if (
-                                                    status === "not-done"
-                                                ) {
-                                                    dayClasses +=
-                                                        "bg-red-100 text-red-800 font-medium hover:bg-red-200 border border-red-300";
-                                                } else {
-                                                    dayClasses +=
-                                                        "bg-gray-100 text-gray-800 font-medium hover:bg-gray-200 border border-gray-300";
-                                                }
-                                            } else {
-                                                dayClasses +=
-                                                    "text-blue-700 hover:bg-blue-50";
-                                            }
+                                            let dayClasses = cn(
+                                                "h-8 flex items-center justify-center text-sm rounded cursor-pointer transition-colors",
+                                                isToday &&
+                                                    "border border-blue-600",
+                                                hasWorkout
+                                                    ? status === "done"
+                                                        ? "bg-green-100 text-green-800 font-medium hover:bg-green-200 border border-green-300"
+                                                        : status === "not-done"
+                                                        ? "bg-red-100 text-red-800 font-medium hover:bg-red-200 border border-red-300"
+                                                        : "bg-gray-100 text-gray-800 font-medium hover:bg-gray-200 border border-gray-300"
+                                                    : "text-blue-700 hover:bg-blue-50"
+                                            );
 
                                             return (
                                                 <div
@@ -548,31 +611,33 @@ export default function CoachPage() {
                                 {/* Legend */}
                                 <div className="space-y-2 pt-4 border-t border-blue-200">
                                     <h5 className="text-sm font-medium text-blue-800">
-                                        Status Legend
+                                        Workout Status Legend
                                     </h5>
-                                    <div className="flex items-center gap-2 text-xs">
-                                        <div className="w-3 h-3 bg-blue-600 rounded"></div>
-                                        <span className="text-blue-700">
-                                            Today
-                                        </span>
-                                    </div>
-                                    <div className="flex items-center gap-2 text-xs">
-                                        <div className="w-3 h-3 bg-green-100 border border-green-300 rounded"></div>
-                                        <span className="text-blue-700">
-                                            Completed
-                                        </span>
-                                    </div>
-                                    <div className="flex items-center gap-2 text-xs">
-                                        <div className="w-3 h-3 bg-red-100 border border-red-300 rounded"></div>
-                                        <span className="text-blue-700">
-                                            Not Completed
-                                        </span>
-                                    </div>
-                                    <div className="flex items-center gap-2 text-xs">
-                                        <div className="w-3 h-3 bg-gray-100 border border-gray-300 rounded"></div>
-                                        <span className="text-blue-700">
-                                            No Status
-                                        </span>
+                                    <div className="flex gap-2 flex-wrap">
+                                        <div className="flex items-center gap-2 text-xs">
+                                            <div className="w-3 h-3 bg-blue-600 rounded"></div>
+                                            <span className="text-blue-700">
+                                                Today
+                                            </span>
+                                        </div>
+                                        <div className="flex items-center gap-2 text-xs">
+                                            <div className="w-3 h-3 bg-green-100 border border-green-300 rounded"></div>
+                                            <span className="text-blue-700">
+                                                Completed
+                                            </span>
+                                        </div>
+                                        <div className="flex items-center gap-2 text-xs">
+                                            <div className="w-3 h-3 bg-red-100 border border-red-300 rounded"></div>
+                                            <span className="text-blue-700">
+                                                Not Completed
+                                            </span>
+                                        </div>
+                                        <div className="flex items-center gap-2 text-xs">
+                                            <div className="w-3 h-3 bg-gray-100 border border-gray-300 rounded"></div>
+                                            <span className="text-blue-700">
+                                                No Status
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -584,7 +649,9 @@ export default function CoachPage() {
                                             </h5>
                                             <Button
                                                 onClick={() =>
-                                                    setSelectedDay(null)
+                                                    setSelectedDay(
+                                                        today.getDay()
+                                                    )
                                                 }
                                                 variant="ghost"
                                                 size="sm"
@@ -645,7 +712,7 @@ export default function CoachPage() {
                                                 )
                                             }>
                                             <TabsList
-                                                className={`grid w-full ${
+                                                className={`grid w-full rounded-full py-2 gap-2 px-2 h-auto  ${
                                                     dayData[selectedDay]
                                                         ?.workouts?.length > 0
                                                         ? "grid-cols-2"
@@ -655,14 +722,14 @@ export default function CoachPage() {
                                                     ?.length > 0 && (
                                                     <TabsTrigger
                                                         value="workouts"
-                                                        className="text-xs">
+                                                        className="text-xs rounded-full data-[state=active]:bg-blue-200">
                                                         <Dumbbell className="h-3 w-3 mr-1" />
                                                         Workouts
                                                     </TabsTrigger>
                                                 )}
                                                 <TabsTrigger
                                                     value="meals"
-                                                    className="text-xs">
+                                                    className="text-xs rounded-full data-[state=active]:bg-blue-200">
                                                     <Utensils className="h-3 w-3 mr-1" />
                                                     Meals
                                                 </TabsTrigger>
