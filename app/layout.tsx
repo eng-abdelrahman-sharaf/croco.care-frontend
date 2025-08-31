@@ -22,12 +22,10 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-                <Suspense fallback={<div>Loading...</div>}>
-                    <FloatingSidebar />
-                    <ScrollArea className="ml-20 h-dvh">{children}</ScrollArea>
-                    <Analytics />
-                </Suspense>
+                className={`font-sans bg-blue-100/60 ${GeistSans.variable} ${GeistMono.variable}`}>
+                <FloatingSidebar />
+                <ScrollArea className="ml-20 h-dvh">{children}</ScrollArea>
+                <Analytics />
             </body>
         </html>
     );
