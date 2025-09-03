@@ -64,18 +64,23 @@ const temperatureData = [
 ];
 
 export default function DoctorPage() {
+    // Scripted doctor replies in order
+    const doctorReplies = [
+        "Hello! I’m Dr. Bot, your AI health assistant. How can I help you today?",
+        "I’m sorry to hear that. Let’s see if I can help you. Could you describe the pain for me? Is it sharp, dull, or aching?",
+        "Got it. Does the pain radiate anywhere else, like down your legs, or does it stay in your back?",
+        "Thanks for the details. Based on what you’re describing, it might be related to a muscle strain, poor posture, or even something like a slipped disc. Can you tell me if you recently lifted anything heavy or had a sudden movement that might have triggered the pain?",
+    ];
+
     const [messages, setMessages] = useState([
         {
             id: 1,
-            text: "Hello! I'm Dr. Sarah, your AI medical assistant. I'm here to help you understand your health data and answer any medical questions you might have. How can I assist you today?",
+            text: doctorReplies[0],
             sender: "doctor",
-            timestamp: new Date().toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-            }),
         },
     ]);
     const [inputMessage, setInputMessage] = useState("");
+    const [isDoctorTyping, setIsDoctorTyping] = useState(false);
 
     const handleSendMessage = () => {
         if (inputMessage.trim()) {
@@ -83,27 +88,33 @@ export default function DoctorPage() {
                 id: messages.length + 1,
                 text: inputMessage,
                 sender: "user",
-                timestamp: new Date().toLocaleTimeString([], {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                }),
             };
             setMessages([...messages, newMessage]);
             setInputMessage("");
 
-            // Simulate doctor response
+            // Simulate doctor response from the scripted flow
+            setIsDoctorTyping(true);
             setTimeout(() => {
-                const doctorResponse = {
-                    id: messages.length + 2,
-                    text: "Thank you for your question. Based on your current health metrics, everything appears to be within normal ranges. I recommend continuing your current health routine and monitoring these values regularly.",
-                    sender: "doctor",
-                    timestamp: new Date().toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                    }),
-                };
-                setMessages((prev) => [...prev, doctorResponse]);
-            }, 1000);
+                setMessages((prev) => {
+                    // Determine how many doctor replies have already been sent
+                    const doctorCount = prev.filter(
+                        (m) => m.sender === "doctor"
+                    ).length;
+                    const reply =
+                        doctorReplies[doctorCount] ||
+                        "Thanks for the information. Avoid heavy lifting for now, try gentle stretches, and if the pain persists or worsens, please consult an in-person physician.";
+                    const updated = [
+                        ...prev,
+                        {
+                            id: prev.length + 1,
+                            text: reply,
+                            sender: "doctor",
+                        },
+                    ];
+                    return updated;
+                });
+                setIsDoctorTyping(false);
+            }, 800);
         }
     };
 
@@ -249,18 +260,19 @@ export default function DoctorPage() {
                                                 <p className="text-sm">
                                                     {message.text}
                                                 </p>
-                                                <p
-                                                    className={`text-xs mt-1 ${
-                                                        message.sender ===
-                                                        "user"
-                                                            ? "text-cyan-100"
-                                                            : "text-gray-500"
-                                                    }`}>
-                                                    {message.timestamp}
-                                                </p>
+                                                {/* Timestamp removed as requested */}
                                             </div>
                                         </div>
                                     ))}
+                                    {isDoctorTyping && (
+                                        <div className="flex justify-start">
+                                            <div className="max-w-[80%] rounded-lg p-3 bg-white border border-cyan-200 text-gray-900">
+                                                <p className="text-sm text-gray-600">
+                                                    Doctor is typing…
+                                                </p>
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             </ScrollArea>
                             <div className="p-4 border-t border-cyan-200 bg-cyan-50">
