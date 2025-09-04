@@ -24,7 +24,7 @@ export const HumanAnatomyOrgans = ({
     ...props
 }: { bodyPart?: BodyPart } & HTMLAttributes<SVGSVGElement>) => {
     const groups: Partial<
-        Record<BodyPart, React.ComponentType<{ bodyPart: BodyPart }>>
+        Record<BodyPart, React.ComponentType<{ bodyPart?: BodyPart }>>
     > = {
         brain: BrainGroup,
         "large-intestine": LargeIntestineGroup,
