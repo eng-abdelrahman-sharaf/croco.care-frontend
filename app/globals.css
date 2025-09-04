@@ -149,3 +149,7 @@
   scrollbar-width: thin;
   scrollbar-color: rgb(37 99 235) rgb(219 234 254);
 }
+
+button{
+    cursor: pointer;
+}
