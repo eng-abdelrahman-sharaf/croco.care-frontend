@@ -1,3 +1,10 @@
+# Croco.Care 🐊
+
+<a href="https://croco.care">
+  <img width="150px" src="https://img.shields.io/badge/View-Demo-blue?style=plastic&logo=google-chrome" alt="view demo"/>
+</a>
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
