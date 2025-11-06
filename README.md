@@ -1,43 +1,70 @@
-# Croco.Care 🐊
+# <img height="50px" src="https://github.com/eng-abdelrahman-sharaf/croco.care-frontend/blob/main/public/icon.png?raw=true"/><span style="font-size: 32px; font-weight: bold;"> Croco Care</span>
 
-<a href="https://croco.care">
-  <img width="150px" src="https://img.shields.io/badge/View-Demo-blue?style=plastic&logo=google-chrome" alt="view demo"/>
-</a>
+<a href="https://croco-care-frontend.vercel.app/">
+<img width="120px" src="https://img.shields.io/badge/View-Demo-blue?style=plastic&logo=google-chrome"  alt="view demo"/></a>
+
+**Croco Care** is an MVP for an all-in-one healthcare web application developed for the **Digitopia Hackathon**.  
+It is built using **Next.js**, **TailwindCSS**, and **Shadcn UI**.
+
+![Thumbnail](./readme-images/Thumb.png)
 
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 🏠 Home Page
+Features:
+- **Today's Reminders**
+- **Health Analytics** including:
+  - Blood Pressure  
+  - Heart Rate  
+  - Temperature  
+  - Other Vital Signs
+- **Today's Health Tip**
 
-## Getting Started
+![Doctor Page](./readme-images/view%201.png)
 
-First, run the development server:
+## 👨‍⚕️ Doctor Page
+Includes:
+- **AI Medical Assistant**
+- **Current Vital Signs**
+- **24-Hour Health Monitoring** for:
+  - Blood Pressure  
+  - Heart Rate  
+  - Temperature  
+  - Oxygen Saturation, etc.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+![Doctor Page](./readme-images/view%202.png)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🏋️ Coach Page
+Contains:
+- **AI Coach Chat**
+- **Analytics Overview**
+  - Calories Burnt  
+  - Weight  
+  - Calories Gained  
+  - Weekly Goals
+- **Calendar Sidebar**
+  - Displays daily workouts  
+  - Indicates completion status (✅ Completed / ⏳ Pending)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+![Coach Page](./readme-images/view%203.png)
+![Calendar Sidebar](./readme-images/view%204.png)
+![Workout Details](./readme-images/view%205.png)
+![Workout Video Playing](./readme-images/view%206.png)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📊 Reports Page
+Displays **Detailed Medical Reports and Assessments** such as:
 
-## Learn More
+| Examination              | Result | Unit      | Normal Value     |
+|--------------------------|--------|-----------|------------------|
+| Complete Blood Count     | Normal | cells/μL  | 4,500–11,000     |
+| Cholesterol Total        | 220    | mg/dL     | <200             |
+| Blood Glucose            | 95     | mg/dL     | 70–100           |
+| Hemoglobin A1C           | 5.8    | %         | <5.7             |
+| Creatinine               | 1.1    | mg/dL     | 0.6–1.2          |
 
-To learn more about Next.js, take a look at the following resources:
+![Reports Page](./readme-images/view%207.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ⚙️ Technologies Used
+- **Next.js**
+- **TailwindCSS**
+- **Shadcn UI**
+- **Vercel** for deployment
